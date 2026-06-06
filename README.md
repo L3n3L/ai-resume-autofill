@@ -28,14 +28,6 @@
 
 ---
 
-## 🖼️ 界面预览
-
-<!-- 替换为实际截图 -->
-<p align="center">
-  <img src="https://via.placeholder.com/400x300/3b82f6/ffffff?text=Popup+Preview" alt="弹窗预览" width="46%">
-  <img src="https://via.placeholder.com/400x300/1e293b/ffffff?text=Form+Detection" alt="表单检测" width="46%">
-</p>
-
 ---
 
 ## 🚀 快速开始
