@@ -1,0 +1,469 @@
+/* ============================================================
+   双木林网申助手 - 弹窗样式 / 冰蓝极简
+   Author: 双木林 | Contact: 1321727938@qq.com
+   禁止未授权商用 / Unauthorized commercial use prohibited
+   ============================================================ */
+
+:root {
+  --bg-body:      #ffffff;
+  --bg-card:      #f8fafc;
+  --bg-hover:     #f1f5f9;
+  --blue:         #3b82f6;
+  --blue-dark:    #2563eb;
+  --blue-light:   #eff6ff;
+  --blue-ring:    rgba(59, 130, 246, 0.12);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted:   #94a3b8;
+  --border:       #e2e8f0;
+  --border-hover: #cbd5e1;
+  --shadow-xs:    0 0 0 1px rgba(0,0,0,0.02);
+  --shadow-sm:    0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:    0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --radius-sm:    6px;
+  --radius-md:    8px;
+  --radius-lg:    10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 460px;
+  min-height: 520px;
+  max-height: 600px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 13px;
+  color: var(--text-primary);
+  background: var(--bg-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { display: flex; flex-direction: column; height: 100vh; }
+
+/* ── Header ──────────────────────────── */
+.header {
+  background: var(--bg-body);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.logo svg { flex-shrink: 0; color: var(--blue); }
+
+.tabs { display: flex; gap: 0; }
+
+.tab {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.tab:hover { color: var(--text-secondary); background: var(--bg-card); }
+
+.tab.active {
+  color: var(--blue);
+  background: var(--bg-card);
+  font-weight: 600;
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 18px;
+  right: 18px;
+  height: 2px;
+  background: var(--blue);
+  border-radius: 1px 1px 0 0;
+}
+
+/* ── Tab Content ──────────────────────── */
+.tab-content { display: none; flex: 1; padding: 20px; background: var(--bg-card); overflow-y: auto; }
+.tab-content.active { display: block; }
+
+/* ── Resume List ──────────────────────── */
+.resume-list { margin-bottom: 14px; }
+
+.resume-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px;
+  background: var(--bg-body);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.resume-card:hover { border-color: var(--border-hover); background: var(--bg-card); }
+
+.resume-card.active {
+  border-color: var(--blue);
+  background: var(--blue-light);
+}
+
+.resume-card .info { flex: 1; min-width: 0; }
+
+.resume-card .name {
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resume-card .date {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.resume-card .badge {
+  font-size: 10px;
+  font-weight: 600;
+  background: var(--blue-light);
+  color: var(--blue-dark);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.resume-card .actions button {
+  background: transparent;
+  border: 1px solid var(--border);
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 3px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  transition: all 0.12s ease;
+}
+
+.resume-card .actions button:hover {
+  border-color: var(--border-hover);
+  color: var(--text-secondary);
+  background: var(--bg-body);
+}
+
+.resume-card .actions .action-star:hover {
+  border-color: #fcd34d;
+  color: #b45309;
+  background: #fffbeb;
+}
+
+.resume-card .actions .action-edit:hover {
+  border-color: #93c5fd;
+  color: var(--blue-dark);
+  background: var(--blue-light);
+}
+
+.resume-card .actions .action-delete:hover {
+  border-color: #fca5a5;
+  color: #dc2626;
+  background: #fef2f2;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-muted);
+}
+
+/* ── Editor ───────────────────────────── */
+.resume-editor {
+  background: var(--bg-body);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+}
+
+.resume-editor h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+
+.form-group { margin-bottom: 14px; }
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+  letter-spacing: 0.02em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--bg-body);
+  transition: all 0.15s ease;
+  resize: vertical;
+  -webkit-font-smoothing: antialiased;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover { border-color: var(--border-hover); }
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-ring);
+}
+
+.form-group textarea { font-size: 12px; line-height: 1.65; }
+.form-group textarea::placeholder { color: var(--text-muted); }
+
+/* ── Buttons ──────────────────────────── */
+.btn-row { display: flex; gap: 8px; margin-top: 14px; }
+
+.btn {
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s ease;
+  letter-spacing: 0.01em;
+}
+
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) { background: var(--blue-dark); }
+.btn-primary:active:not(:disabled) { transform: scale(0.98); }
+
+.btn-ghost {
+  background: var(--bg-body);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  background: var(--bg-card);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.btn-test {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-body);
+  color: var(--blue);
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.btn-test:hover:not(:disabled) {
+  background: var(--blue-light);
+  border-color: var(--blue);
+}
+
+.btn-test .test-icon svg { display: block; }
+
+.btn-test.loading .test-icon {
+  animation: spin 0.8s linear infinite;
+}
+
+.btn-test.loading .test-label::after {
+  content: '中...';
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.btn-danger {
+  background: transparent;
+  color: #ef4444;
+  border: 1px solid #fca5a5;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.btn-danger:hover { background: #fef2f2; }
+
+/* ── Status Msg ────────────────────────── */
+.status-msg {
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.status-msg.success {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.status-msg.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.status-msg.loading {
+  background: var(--blue-light);
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+/* ── Settings ──────────────────────────── */
+.settings-section {
+  background: var(--bg-body);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+.settings-section h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+
+.help-list {
+  padding-left: 18px;
+  font-size: 12px;
+  line-height: 2;
+  color: var(--text-secondary);
+}
+
+.help-list li::marker { color: var(--blue); font-weight: 600; font-size: 11px; }
+
+/* ── 通用 ──────────────────────────────── */
+.hidden { display: none !important; }
+
+/* ── 打赏 ──────────────────────────────── */
+.donate-section {
+  text-align: center;
+  padding: 14px 18px;
+}
+
+.donate-intro {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.donate-btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-donate {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 6px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-donate:hover {
+  color: var(--blue);
+  border-color: var(--blue);
+  background: var(--blue-light);
+}
+
+.btn-donate.active {
+  color: #fff;
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.donate-qr {
+  margin-top: 10px;
+  animation: fadeIn 0.2s ease;
+}
+
+.donate-qr img {
+  width: 140px;
+  height: 140px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  display: block;
+  margin: 0 auto 4px;
+}
+
+.donate-qr .qr-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Scrollbar ────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }

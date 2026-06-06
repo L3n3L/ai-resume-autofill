@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!-- 双木林网申助手 | Author: 双木林 | Contact: 1321727938@qq.com | Unauthorized commercial use prohibited -->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双木林网申助手</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- 顶部导航 -->
+    <header class="header">
+      <h1 class="logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+        双木林网申助手
+      </h1>
+      <div class="tabs">
+        <button class="tab active" data-tab="resume">简历</button>
+        <button class="tab" data-tab="settings">设置</button>
+      </div>
+    </header>
+
+    <!-- ========== 简历管理页 ========== -->
+    <section id="tab-resume" class="tab-content active">
+
+      <!-- 简历列表 -->
+      <div id="resume-list" class="resume-list"></div>
+
+      <!-- 编辑区 -->
+      <div id="resume-editor" class="resume-editor">
+        <h3 id="editor-title">新建简历</h3>
+
+        <div class="form-group">
+          <label>简历名称</label>
+          <input type="text" id="resume-name" placeholder="如：中文简历-校招" />
+        </div>
+
+        <div class="form-group">
+          <label>简历内容</label>
+          <textarea
+            id="resume-text"
+            rows="12"
+            placeholder="将你的简历原文粘贴在这里...&#10;AI 会在填表时自动从原文中提取匹配的信息"
+          ></textarea>
+        </div>
+
+        <div class="btn-row">
+          <button id="btn-save" class="btn btn-primary">保存简历</button>
+          <button id="btn-cancel" class="btn btn-ghost hidden">取消</button>
+        </div>
+
+        <div id="save-status" class="status-msg hidden"></div>
+      </div>
+    </section>
+
+    <!-- ========== 设置页 ========== -->
+    <section id="tab-settings" class="tab-content">
+
+      <div class="settings-section">
+        <h3>API 配置</h3>
+
+        <div class="form-group">
+          <label>API Format</label>
+          <select id="cfg-apiFormat">
+            <option value="anthropic">Anthropic (DeepSeek / Claude)</option>
+            <option value="openai">OpenAI (GPT / DeepSeek / 通义千问 / 豆包)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Base URL</label>
+          <input type="text" id="cfg-baseUrl" placeholder="https://api.deepseek.com/anthropic" />
+        </div>
+
+        <div class="form-group">
+          <label>API Key</label>
+          <input type="password" id="cfg-apiKey" placeholder="sk-..." />
+        </div>
+
+        <div class="form-group">
+          <label>Model</label>
+          <input type="text" id="cfg-model" placeholder="deepseek-v4-pro" />
+        </div>
+
+        <div class="btn-row">
+          <button id="btn-save-cfg" class="btn btn-primary">保存配置</button>
+          <button id="btn-test-cfg" class="btn btn-test">
+            <span class="test-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+            <span class="test-label">测试连接</span>
+          </button>
+        </div>
+        <div id="cfg-status" class="status-msg hidden"></div>
+        <div id="cfg-test-status" class="status-msg hidden"></div>
+      </div>
+
+      <div class="settings-section">
+        <h3>使用说明</h3>
+        <ol class="help-list">
+          <li>在 <strong>简历</strong> 页面粘贴简历原文并保存</li>
+          <li>打开任意网申页面，表单区域顶部出现 <strong>自动填表</strong> 按钮</li>
+          <li>点击按钮，AI 自动从简历中匹配信息并填入表单</li>
+        </ol>
+      </div>
+
+      <div class="settings-section donate-section">
+        <p class="donate-intro">觉得好用？请作者喝杯咖啡 ☕</p>
+        <div class="donate-btns">
+          <button class="btn btn-donate" data-code="wx">微信打赏</button>
+          <button class="btn btn-donate" data-code="zfb">支付宝打赏</button>
+        </div>
+        <div class="donate-qr hidden" id="donate-qr"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+/* ============================================================
+   双木林网申助手 - 注入样式 / 冰蓝极简
+   Author: 双木林 | Contact: 1321727938@qq.com
+   禁止未授权商用 / Unauthorized commercial use prohibited
+   ============================================================ */
+
+/* 悬浮按钮入场动画 */
+#__autoapply_btn {
+  animation: __autoapply_fadeIn 0.3s ease;
+}
+
+@keyframes __autoapply_fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 分组按钮容器 */
+.__autoapply_group_wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* 分组按钮 Badge */
+.__autoapply_group_wrap > span {
+  font-size: 10px;
+  font-weight: 600;
+  color: #3b82f6;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* 分组按钮 */
+.__autoapply_group_btn {
+  padding: 5px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #ffffff;
+  color: #475569;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.__autoapply_group_btn:hover {
+  background: #3b82f6;
+  color: #fff;
+  border-color: #3b82f6;
+  box-shadow: 0 1px 4px rgba(59, 130, 246, 0.25);
+}
+
+/* 注释：悬浮按钮和选择器样式由 content.js 动态注入，
+   此处仅保留 content.css 原有逻辑和分组按钮样式 */
