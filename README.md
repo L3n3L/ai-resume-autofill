@@ -19,14 +19,14 @@
 
 ### 它能做什么
 
-- 🔍 **智能表单检测** — 自动识别页面上的所有表单区域，支持 `<form>`、`<section>`、卡片、弹窗等容器
-- 🧠 **AI 语义匹配** — 将简历原文与表单字段（姓名/学历/经历/技能…）智能配对
-- 📋 **多区域支持** — 同一页面多个表单独立识别，分别填写，不串数据
-- 🎯 **精准填入** — 覆盖 input / textarea / select / radio / checkbox，支持 React / Vue 框架
+- 🔍 **智能表单检测** — 覆盖 `<form>`、`<section>`、卡片、弹窗、iframe 等各类容器，自动识别页面所有表单区域
+- 🧠 **AI 语义匹配** — 将简历原文与表单字段智能配对，一次 API 调用完成全部匹配
+- 📋 **多步表单支持** — 自动识别分步表单，预扫所有区块，逐块填入，不串数据
+- 🎯 **精准填入** — 覆盖 input / textarea / select / radio / checkbox / contentEditable / 日期选择器 / 级联选择器，适配 React / Vue 框架
+- 🔓 **自动展区** — 智能识别并点击"添加""展开"按钮，扫出折叠区域的隐藏字段
+- 📊 **写入验证** — 填入后比对前后值，确保数据真正生效
 - 🔒 **隐私优先** — 简历数据仅存本地 `chrome.storage.local`，不上传开发者服务器
 - 🎨 **冰蓝极简 UI** — 清爽的视觉设计，操作流畅不打扰
-
----
 
 ---
 
@@ -84,24 +84,23 @@ ai-resume-autofill/
 └── privacy-policy.html     # 隐私政策
 ```
 
-### 工作原理
+### 核心能力
 
-```mermaid
-sequenceDiagram
-    participant Page as 网页表单
-    participant Content as Content Script
-    participant SW as Service Worker
-    participant AI as AI 服务
+| 场景 | 策略 |
+|------|------|
+| 单页表单 | 扫描→分组→AI匹配→逐组填入 |
+| 多步表单 | 预扫所有区块→一次AI调用→逐块填入 |
+| 折叠区域 | 智能识别"添加/展开"按钮并自动点击 |
+| iframe 表单 | 递归穿透扫描 |
+| React 受控组件 | 原生 setter + 事件派发 + fiber 劫持兜底 |
+| 自定义下拉 | 弹出下拉→匹配选项→点击选中 |
+| 日期选择器 | 原生 date / 年月分段式 / 自定义弹窗 |
+| 级联选择器 | 逐级展开并点选 |
+| contentEditable | 直接写入 textContent |
 
-    Content->>Page: 扫描表单字段（label/type/options）
-    Page-->>Content: 返回字段列表
-    Content->>SW: 发送字段 + 目标简历
-    SW->>SW: 读取本地简历原文
-    SW->>AI: 构造 prompt，API 调用
-    AI-->>SW: 返回 JSON 映射结果
-    SW-->>Content: { field_id: value }
-    Content->>Page: 逐字段填入（原生 setter + 事件派发）
-```
+### 调试
+
+在目标页面 URL 后添加 `?__log=4` 参数可开启详细日志（级别 0=静默 1=错误 2=警告 3=信息 4=调试），在浏览器控制台查看 `[时间戳][模块] ` 格式的结构化输出。
 
 ---
 
